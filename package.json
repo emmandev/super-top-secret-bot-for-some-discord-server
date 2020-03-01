@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,5 +13,15 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "eslint": "^6.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "nodemonConfig": {
+    "ext": "ts",
+    "exec": "ts-node ./src/index.ts",
+    "watch": [
+      "src"
+    ]
   }
 }
