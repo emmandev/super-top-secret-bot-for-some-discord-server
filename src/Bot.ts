@@ -20,7 +20,13 @@ export class Bot
 
       if (message.channel.type == "dm") {
         let channel = this.client.channels.get(relay_ch_id) as TextChannel;
-        channel.send("```" + message.content + "```");
+        channel.send({
+          embed: {
+            color: 0x3498db,
+            title: "New cheesemiss",
+            description: message.content
+          }
+        });
       }
     });
 
