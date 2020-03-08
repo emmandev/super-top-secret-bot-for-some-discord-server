@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import { Client, Message, TextChannel } from "discord.js";
+import { Client, Message, TextChannel, MessageReaction, User } from "discord.js";
 
 @injectable()
 export class Bot
@@ -22,6 +22,19 @@ export class Bot
         let channel = this.client.channels.get(relay_ch_id) as TextChannel;
         channel.send(message.content);
       }
+    });
+
+    this.client.on('messageReactionAdd', (reaction: MessageReaction, user: User) => {
+      if (reaction.message.channel.id != relay_ch_id) {
+        return;
+      }
+
+      if (reaction.emoji.name != '✅') {
+        return;
+      }
+
+      let confessionChannel = this.client.channels.get(confession_ch_id) as TextChannel;
+      confessionChannel.send(reaction.message.content);
     });
 
     return this.client.login(token);
