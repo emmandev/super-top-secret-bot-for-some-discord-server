@@ -40,7 +40,13 @@ export class Bot
       }
 
       let confessionChannel = this.client.channels.get(confession_ch_id) as TextChannel;
-      confessionChannel.send(reaction.message.content);
+      confessionChannel.send({
+        embed: {
+          color: 0x3498db,
+          title: "New cheesemiss",
+          description: reaction.message.content
+        }
+      });
     });
 
     return this.client.login(token);
