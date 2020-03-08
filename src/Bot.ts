@@ -20,7 +20,7 @@ export class Bot
 
       if (message.channel.type == "dm") {
         let channel = this.client.channels.get(relay_ch_id) as TextChannel;
-        channel.send(message.content);
+        channel.send("```" + message.content + "```");
       }
     });
 
