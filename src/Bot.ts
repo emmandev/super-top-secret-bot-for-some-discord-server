@@ -21,6 +21,7 @@ export class Bot
       if (message.channel.type == "dm") {
         let channel = this.client.channels.get(relay_ch_id) as TextChannel;
         channel.send(message.content);
+        message.reply("Your confession has been sent to the authorities! Let's hope it gets posted! 😄");
       }
     });
 
