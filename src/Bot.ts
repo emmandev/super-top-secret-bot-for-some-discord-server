@@ -21,11 +21,14 @@ export class Bot
       if (message.channel.type == "dm") {
         let channel = this.client.channels.get(relay_ch_id) as TextChannel;
         channel.send(message.content);
-        message.reply("Your confession has been sent to the authorities! Let's hope it gets posted! 😄");
+        message.reply("Currently disabled. Hail Hydra!");
       }
     });
 
     this.client.on('messageReactionAdd', (reaction: MessageReaction, user: User) => {
+      // currently disabling the reaction
+      return;
+
       if (reaction.message.channel.id != relay_ch_id) {
         return;
       }
