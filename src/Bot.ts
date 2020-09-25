@@ -26,9 +26,6 @@ export class Bot
     });
 
     this.client.on('messageReactionAdd', (reaction: MessageReaction, user: User) => {
-      // currently disabling the reaction
-      return;
-
       if (reaction.message.channel.id != relay_ch_id) {
         return;
       }
