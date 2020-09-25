@@ -21,7 +21,7 @@ export class Bot
       if (message.channel.type == "dm") {
         let channel = this.client.channels.get(relay_ch_id) as TextChannel;
         channel.send(message.content);
-        message.reply("Currently disabled. Hail Hydra!");
+        message.reply('Did you miss me? The Botricat lives on. Btw, I have sent your message.');
       }
     });
 
