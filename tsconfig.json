@@ -6,7 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["reflect-metadata", "node"],
+    "types": ["node"],
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
