@@ -10,6 +10,12 @@ import {
 const client = new Client();
 const relayChannelId = process.env.RELAY_CHANNEL_ID || '';
 const confessionChannelId = process.env.CONFESSION_CHANNEL_ID || '';
+const nsfwChannelId = process.env.NSFW_CHANNEL_ID || '';
+
+const reactionMap: { [key: string]: string } = {
+  '✅': confessionChannelId,
+  '🍆': nsfwChannelId,
+};
 
 client.on('ready', () => {
   console.log('App is ready');
@@ -38,11 +44,11 @@ client.on('messageReactionAdd', async (reaction: MessageReaction) => {
     return;
   }
 
-  if (reaction.emoji.name !== '✅') {
+  if (!Object.keys(reactionMap).includes(reaction.emoji.name)) {
     return;
   }
 
-  const channel = await client.channels.fetch(confessionChannelId);
+  const channel = await client.channels.fetch(reactionMap[reaction.emoji.name]);
 
   if (!(channel instanceof TextChannel)) {
     console.error('Confession channel is invalid');
